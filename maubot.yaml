@@ -1,0 +1,7 @@
+maubot: 0.1.0
+id: mx.quinn.timer
+version: 1.0.0
+license: MIT
+modules:
+  - timer
+main_class: Timer
