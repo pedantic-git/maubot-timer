@@ -4,5 +4,6 @@ from maubot.handlers import command
 
 class Timer(Plugin):
   @command.new()
-  async def timer(self, evt: MessageEvent) -> None:
-    await evt.reply("You rang?")
+  @command.argument("time")
+  async def timer(self, evt: MessageEvent, time: str) -> None:
+    await evt.respond(f"Timer started for {time} seconds")
