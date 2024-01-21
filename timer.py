@@ -17,7 +17,10 @@ class Timer(Plugin):
   @command.argument("time", required=True)
   @command.argument("name", required=False)
   async def timer(self, evt: MessageEvent, time: str, name: str | None) -> None:
-    time = int(time)
+    try:
+      time = int(time)
+    except ValueError:
+      return await evt.reply(f"Invalid time '{time}' - try giving me a number of seconds")
     name = name or self.new_name()
     await evt.respond(f"⏳ Timer {name} started for {time} seconds")
     await asyncio.sleep(time)
